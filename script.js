@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let zoomLevel = panZoom.getTransform().scale;
 
         labels.forEach(label => {
-            if (zoomLevel > 2) {
+            if (zoomLevel > 2.0) {
                 label.style.display = "block";
             } else {
                 label.style.display = "none";
