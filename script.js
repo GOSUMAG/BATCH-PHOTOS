@@ -12,17 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const photoContainer = document.getElementById("photo-container");
     const labels = document.querySelectorAll(".label");
 
-    // ✅ Use Panzoom with correct syntax
+    // ✅ Initialize Panzoom with correct syntax
     const panZoom = Panzoom(photoContainer, {
         maxScale: 4,
         minScale: 1,
         contain: "outside"
     });
 
-    // Enable zooming with mouse scroll
+    // ✅ Enable zooming with mouse scroll
     photoContainer.addEventListener("wheel", panZoom.zoomWithWheel);
 
-    // Show labels when zoom level > 2
+    // ✅ Track zoom changes and show/hide labels
     photoContainer.addEventListener("panzoomchange", function (event) {
         let zoomLevel = event.detail.scale;
         console.log("Current zoom level:", zoomLevel);
