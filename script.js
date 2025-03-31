@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Panzoom script is running");
 
     // Initialize Panzoom
-    const panZoom = panzoom(photoContainer, {
+    const panZoom = Panzoom(photoContainer, {
         zoomDoubleClickSpeed: 1,
         minZoom: 1,
         maxZoom: 4,
