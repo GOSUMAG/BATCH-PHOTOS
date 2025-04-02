@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Panzoom script is running");
 
-    // Check if Panzoom is loaded correctly
     if (typeof Panzoom !== "undefined") {
         console.log("Panzoom is loaded correctly!");
     } else {
@@ -11,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const photoContainer = document.getElementById("photo-container");
     const labels = document.querySelectorAll(".label");
+    const zoomThreshold = 2; // When to switch from bubble to rectangle
 
     // ✅ Initialize Panzoom
     const panZoom = Panzoom(photoContainer, {
@@ -22,26 +22,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✅ Enable zooming with mouse scroll
     photoContainer.addEventListener("wheel", panZoom.zoomWithWheel);
 
-    // Function to check zoom level and show/hide labels
-    function updateLabels() {
-        let zoomLevel = panZoom.getScale(); // Get current zoom level
+    function updateLabelsVisibility() {
+        let zoomLevel = panZoom.getScale();
         console.log("Current zoom level:", zoomLevel);
 
         labels.forEach(label => {
-            label.style.display = zoomLevel > 2 ? "block" : "none";
+            if (zoomLevel > zoomThreshold) {
+                label.classList.add("zoomed"); // Convert to rectangle
+                label.style.fontSize = "14px"; // Show text
+                label.style.setProperty("--label-scale", (zoomLevel / zoomThreshold).toFixed(2)); // Scale label
+            } else {
+                label.classList.remove("zoomed"); // Keep as bubble
+                label.style.fontSize = "0px"; // Hide text
+            }
         });
     }
 
-    // ✅ Listen for panzoom change (touch & mobile users)
-    photoContainer.addEventListener("panzoomchange", updateLabels);
-
-    // ✅ Listen for mousewheel zoom (desktop users)
-    photoContainer.addEventListener("wheel", function () {
-        setTimeout(updateLabels, 100); // Slight delay to ensure smooth update
-    });
-
-    // ✅ Listen for trackpad pinch zoom (desktop users)
-    photoContainer.addEventListener("gesturechange", function () {
-        setTimeout(updateLabels, 100);
-    });
+    photoContainer.addEventListener("panzoomchange", updateLabelsVisibility);
+    photoContainer.addEventListener("wheel", () => setTimeout(updateLabelsVisibility, 100));
+    photoContainer.addEventListener("gesturechange", () => setTimeout(updateLabelsVisibility, 100));
 });
