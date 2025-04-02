@@ -1,5 +1,14 @@
+/* Ensure full-page layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f8f9fa; /* Light background */
+}
+
+/* Center and contain the image properly */
 #photo-container {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     position: relative;
     overflow: hidden;
@@ -8,11 +17,18 @@
     align-items: center;
 }
 
+/* Ensure the image scales properly with a frame */
 #batch-photo {
     width: auto;
     height: 90%;
     max-width: 100%;
     max-height: 100%;
+    
+    /* 🖼️ Adding a FRAME */
+    border: 12px solid #2c3e50; /* Dark Blue frame */
+    border-radius: 20px; /* Rounded edges */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3), 
+                0px 0px 12px rgba(53, 52, 52, 0.8) inset;
 }
 
 /* Default label as a bubble with black & white rings */
@@ -21,8 +37,8 @@
     background: rgba(255, 255, 255, 0.9); /* Brighter white */
     color: black;
     border-radius: 50%; /* Circular bubble */
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     font-size: 0px; /* Hidden text initially */
     text-align: center;
     display: flex;
