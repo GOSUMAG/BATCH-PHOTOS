@@ -17,12 +17,12 @@ body, html {
     align-items: center;
 }
 
-/* Ensure the image scales properly with a frame */
+/* Maintain proper aspect ratio */
 #batch-photo {
-    width: auto;
-    height: 90%;
-    max-width: 100%;
-    max-height: 100%;
+    width: 90vw; /* Ensure it fits on smaller screens */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 85vh;
+    object-fit: contain; /* Prevent stretching */
     
     /* 🖼️ Adding a FRAME */
     border: 12px solid #2c3e50; /* Dark Blue frame */
@@ -31,14 +31,14 @@ body, html {
                 0px 0px 12px rgba(53, 52, 52, 0.8) inset;
 }
 
-/* Default label as a bubble with black & white rings */
+/* Default label as a bubble */
 .label {
     position: absolute;
     background: rgba(255, 255, 255, 0.9); /* Brighter white */
     color: black;
     border-radius: 50%; /* Circular bubble */
-    width: 14px;
-    height: 14px;
+    width: 2.5%; /* Relative to image size */
+    height: 2.5%;
     font-size: 0px; /* Hidden text initially */
     text-align: center;
     display: flex;
@@ -49,26 +49,22 @@ body, html {
     pointer-events: none; /* Prevent mouse interactions */
     
     /* Dual ring effect */
-    border: 2px solid black; /* Inner black ring */
-    box-shadow: 0 0 5px white, 0 0 8px black; /* Outer white glow with black shadow */
+    border: 1px solid black; /* Inner black ring */
+    box-shadow: 0 0 3px white, 0 0 5px black; /* Outer white glow with black shadow */
 }
 
-/* When zoom threshold is crossed, make label rectangular */
+/* Make label text and size scale dynamically */
 .label.zoomed {
     border-radius: 8px; /* Rectangular */
     width: auto;
     height: auto;
-    font-size: 14px;
-    padding: 5px 10px;
-    min-width: 60px;
-    min-height: 25px;
-    background: rgba(255, 255, 255, 0.95); /* Match bubble color */
+    font-size: min(2vw, 14px); /* Scale based on screen size */
+    padding: min(0.5vw, 5px) min(1vw, 10px);
+    background: rgba(255, 255, 255, 0.95);
     color: black;
-    box-shadow: 0 0 8px white, 0 0 12px black; /* Maintain black & white ring effect */
+    box-shadow: 0 0 8px white, 0 0 12px black;
     text-align: center;
-    
-    /* Center transition from bubble */
-    transform: translate(-50%, -50%);
+    transform: scale(var(--label-scale, 1)) translate(-50%, -50%);
 }
 
 /* Ensure labels scale smoothly */
