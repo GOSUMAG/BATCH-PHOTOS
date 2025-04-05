@@ -18,15 +18,19 @@ body, html {
 }
 
 #image-wrapper
-{position:relative;
-display: inline-block;}
+{
+    position:relative;
+    max-width: 90vw;
+    width: fit-content;
+    display: inline-block;
+}
 
 /* Maintain proper aspect ratio */
 #batch-photo {
-    width: 90vw; /* Ensure it fits on smaller screens */
+    width: 100%; /* Ensure it fits on smaller screens */
     height: auto; /* Maintain aspect ratio */
     max-height: 85vh;
-    object-fit: contain; /* Prevent stretching */
+    object-fit:contain; /* Prevent stretching */
     
     /* 🖼️ Adding a FRAME */
     border: 12px solid #2c3e50; /* Dark Blue frame */
@@ -41,7 +45,7 @@ display: inline-block;}
     background: rgba(255, 255, 255, 0.9); /* Brighter white */
     color: black;
     border-radius: 50%; /* Circular bubble */
-    width: 1vw; /* Relative to image size */
+    width: 0.6rem; /* Relative to image size */
     aspect-ratio: 1/1;
     font-size: 0px; /* Hidden text initially */
     text-align: center;
@@ -64,7 +68,7 @@ display: inline-block;}
     border: 0.1vw solid rgb(255, 255, 255);
     width: auto;
     height: auto;
-    /*font-size: (0.1vw, 14px); /* Scale based on screen size */
+    font-size: (100rem); /* Scale based on screen size */
     padding: 0.2vw;
     background: rgba(255, 255, 255, 0.95);
     color: black;
