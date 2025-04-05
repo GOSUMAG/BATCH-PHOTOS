@@ -17,6 +17,10 @@ body, html {
     align-items: center;
 }
 
+#image-wrapper
+{position:relative;
+display: inline-block;}
+
 /* Maintain proper aspect ratio */
 #batch-photo {
     width: 90vw; /* Ensure it fits on smaller screens */
@@ -37,8 +41,8 @@ body, html {
     background: rgba(255, 255, 255, 0.9); /* Brighter white */
     color: black;
     border-radius: 50%; /* Circular bubble */
-    width: 2.5%; /* Relative to image size */
-    height: 2.5%;
+    width: 1vw; /* Relative to image size */
+    aspect-ratio: 1/1;
     font-size: 0px; /* Hidden text initially */
     text-align: center;
     display: flex;
@@ -49,17 +53,19 @@ body, html {
     pointer-events: none; /* Prevent mouse interactions */
     
     /* Dual ring effect */
-    border: 1px solid black; /* Inner black ring */
+    border: 0.1vw solid rgb(133, 133, 133); /* Inner black ring */
     box-shadow: 0 0 3px white, 0 0 5px black; /* Outer white glow with black shadow */
 }
 
 /* Make label text and size scale dynamically */
 .label.zoomed {
-    border-radius: 8px; /* Rectangular */
+    border-radius: 0.65vw; /* Rectangular */
+    aspect-ratio:unset;
+    border: 0.1vw solid rgb(255, 255, 255);
     width: auto;
     height: auto;
-    font-size: min(2vw, 14px); /* Scale based on screen size */
-    padding: min(0.5vw, 5px) min(1vw, 10px);
+    /*font-size: (0.1vw, 14px); /* Scale based on screen size */
+    padding: 0.2vw;
     background: rgba(255, 255, 255, 0.95);
     color: black;
     box-shadow: 0 0 8px white, 0 0 12px black;
