@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ Initialize Panzoom
     const panZoom = Panzoom(photoContainer, {
-        maxScale: 4,
+        maxScale: 8,
         minScale: 1,
         contain: "outside"
     });
@@ -27,11 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Current zoom level:", zoomLevel);
 
         labels.forEach(label => {
-            if (zoomLevel > zoomThreshold) {
+
+            if (zoomLevel > zoomThreshold) 
+                {
                 label.classList.add("zoomed"); // Convert to rectangle
-                label.style.fontSize = "0.8vw"; // Show text
+                label.style.fontSize = "1%"; // Show text
                 
-            } else {
+            }
+                else {
                 label.classList.remove("zoomed"); // Keep as bubble
                 label.style.fontSize = "0px"; // Hide text
             }
