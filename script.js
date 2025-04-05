@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         labels.forEach(label => {
             if (zoomLevel > zoomThreshold) {
                 label.classList.add("zoomed"); // Convert to rectangle
-                label.style.fontSize = "1vw"; // Show text
+                label.style.fontSize = "0.8vw"; // Show text
                 
             } else {
                 label.classList.remove("zoomed"); // Keep as bubble
